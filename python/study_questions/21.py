@@ -35,8 +35,6 @@ def translator_DNA_to_AA(FASTA_in, FASTA_out):
                             triplet = triplet + i
                             counter += 1
                         else:
-                            # if triplet in codonstops: hace falta que traduzca
-                            #     break
                             counter = 0
                             triplet = triplet + i
                             translation = translation + codon2aa[triplet]

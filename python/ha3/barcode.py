@@ -48,10 +48,13 @@ with open(inputfile, 'r') as fin, \
         if counter == 4:
             counter = 0
             if seq.startswith('TATCCTCT'):
+                seq=seq.lstrip('TATCCTCT')
                 print('{}\n{}\n{}\n{}'.format(idcode, seq, plus, info), file=fout1)
             elif seq.startswith('GTAAGGAG'):
+                seq=seq.lstrip('GTAAGGAG')
                 print('{}\n{}\n{}\n{}'.format(idcode, seq, plus, info), file=fout2)
             elif seq.startswith('TCTCTCCG'):
+                seq=seq.lstrip('TCTCTCCG')
                 print('{}\n{}\n{}\n{}'.format(idcode, seq, plus, info), file=fout3)
             else:
                 print('{}\n{}\n{}\n{}'.format(idcode, seq, plus, info), file=fout4)
