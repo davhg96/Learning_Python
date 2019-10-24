@@ -69,7 +69,7 @@ def parse_fasta_to_dict(FASTA_file):
             if not line.startswith('>'):
                 sequence = line.rstrip()
                 sequence = sequence.rstrip('\n')
-                sequence = sequence.lower()
+                #sequence = sequence.lower()
                 nt = nt + sequence
                 seq_dict[idline] = nt
     return seq_dict
