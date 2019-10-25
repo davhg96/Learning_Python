@@ -69,7 +69,7 @@ def parse_fasta_to_dict(FASTA_file):
             if not line.startswith('>'):
                 sequence = line.rstrip()
                 sequence = sequence.rstrip('\n')
-                #sequence = sequence.lower()
+                sequence = sequence.upper()
                 nt = nt + sequence
                 seq_dict[idline] = nt
     return seq_dict
@@ -231,7 +231,8 @@ def GC_content_line(fasta_file, fasta_out, newfile=True, ):
 
 
 # measure the length of each line and the total lenght(printed in screen)
-def seq_len_fasta(FASTA_input,FASTA_out):  # Will take a fasta in and print the total lenght in screen and a fasta with each lines lenght in the ids
+def seq_len_fasta(FASTA_input,
+                  FASTA_out):  # Will take a fasta in and print the total lenght in screen and a fasta with each lines lenght in the ids
     with open(FASTA_input, 'r') as f, \
             open(FASTA_out, 'w') as f2:
         nt = ''
@@ -293,7 +294,7 @@ def dict_feature_to_fasta(feature_dict, name_fasta):
             print('{}\n{}'.format(key, feature_dict[key]), file=f_out)
 
 
-#takes a fasta and a target, and outputs a file with the counts for the target per line
+# takes a fasta and a target, and outputs a file with the counts for the target per line
 def oligo_line_counter(FASTA_input, target, file_out):
     with open(FASTA_input, 'r') as f, \
             open(file_out, 'w')as f2:
@@ -310,7 +311,7 @@ def oligo_line_counter(FASTA_input, target, file_out):
             for line in f:
                 if line.startswith('>'):  # Save the sequences in a dictionary,
                     if nt:
-                        counts = len(re.findall(target,nt))
+                        counts = len(re.findall(target, nt))
                         print('{}\t{}'.format(id, counts), file=f2)
                     idline = line.rstrip()  # taking away the newlines
                     idline = idline.lstrip('>')
